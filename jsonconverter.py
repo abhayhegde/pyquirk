@@ -19,7 +19,6 @@ for i in range(nrow):
     data['cols'][i] += [1] * (nrow - len(data['cols'][i]))
 
 data['rows'] = list(map(list, zip(*data.pop('cols'))))
-print(data)
 
 quantikz_env = ["\\begin{quantikz}", "\end{quantikz}"]
 initial_state = []
@@ -36,7 +35,7 @@ for i in range(nrow):
     a = [subs[ele] for ele in data['rows'][i]]
     comp.append(a)
 
-code = open("code.txt", "w")
+code = open("code.tex", "w")
 code.write(''.join([quantikz_env[0], "\n"]))
 for i in range(nrow):
     code.write(
