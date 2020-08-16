@@ -15,9 +15,9 @@ if data.get('init') == None:
 else:
     data['init'] += [0] * (nrow - len(data['init']))
 
-for i in range(nrow):
+for i in range(len(data['cols'])):
     data['cols'][i] += [1] * (nrow - len(data['cols'][i]))
-
+print(data)
 data['rows'] = list(map(list, zip(*data.pop('cols'))))
 
 quantikz_env = ["\\begin{quantikz}", "\end{quantikz}"]
@@ -27,8 +27,9 @@ for state in range(len(data['init'])):
     initial_state.append(
         ''.join(["\lstick{\ket{", str(data['init'][state]), "}}"]))
 
-subs = dict(zip(["X", "Y", "Z", "H", 1],
-                ["\gate{X}", "\gate{Y}", "\gate{Z}", "\gate{H}", "\qw"]))
+subs = dict(zip([1, "X", "Y", "Z", "H", "Measure"],
+                ["\qw", "\gate{X}", "\gate{Y}", "\gate{Z}", "\gate{H}", "\meter{}"]))
+print(data)
 
 comp = []
 for i in range(nrow):
