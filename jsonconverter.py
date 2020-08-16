@@ -40,6 +40,9 @@ for i in range(nrow):
     comp.append(a)
 
 code = open("code.tex", "w")
+preamble = "\\documentclass{article}\n\\usepackage{tikz}\n\\usetikzlibrary{quantikz}\n\\begin{document}\n"
+end = "\\end{document}"
+code.write(preamble)
 code.write(''.join([quantikz_env[0], "\n"]))
 for i in range(nrow):
     if i == nrow - 1:
@@ -47,5 +50,6 @@ for i in range(nrow):
     else:
         code.write(
             ''.join([initial_state[i], '&', ' & '.join(comp[i]), '\\\\', '\n']))
-code.write(''.join([quantikz_env[1]]))
+code.write(''.join([quantikz_env[1], "\n"]))
+code.write(end)
 code.close()

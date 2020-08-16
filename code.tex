@@ -1,6 +1,10 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{quantikz}
+\begin{document}
 \begin{quantikz}
-\lstick{\ket{0}}&\gate{H} & \qw & \qw & \qw\\
-\lstick{\ket{0}}&\qw & \gate{Y} & \qw & \qw\\
-\lstick{\ket{0}}&\qw & \qw & \gate{Z} & \qw\\
-\lstick{\ket{0}}&\qw & \qw & \qw & \gate{H}
+\lstick{\ket{0}}&\gate{H} & \qw\\
+\lstick{\ket{0}}&\qw & \gate{Y}\\
+\lstick{\ket{0}}&\gate{Z} & \gate{H}
 \end{quantikz}
+\end{document}
