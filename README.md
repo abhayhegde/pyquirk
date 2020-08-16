@@ -8,7 +8,7 @@ Python 3+
 
 Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/quirk) into a `.txt` file. The output is formatted into a `.tex` file.
 
-## Future improvements;
+## Future improvements
 - To add more complex examples.
 - Parsing from URL.
 - CX gate has to be added.
