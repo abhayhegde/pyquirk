@@ -3,8 +3,7 @@
 \usetikzlibrary{quantikz}
 \begin{document}
 \begin{quantikz}
-\lstick{\ket{0}}&\gate{H} & \qw\\
-\lstick{\ket{0}}&\qw & \gate{Y}\\
-\lstick{\ket{0}}&\gate{Z} & \gate{H}
+\lstick{\ket{0}}&\gate{H} & \ctrl{1} & \meter{}& \cw \\
+\lstick{\ket{0}}&\qw & \gate{X} & \qw& \qw
 \end{quantikz}
 \end{document}
