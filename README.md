@@ -27,22 +27,35 @@ Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/
 
 ![Step 2: Click on Copy JSON settings](../quirk2.png)
 
-A short rundown of **quantikz** usage:
+A short rundown of **quantikz** usage is given below. I assume this is the format of your main file in which the circuit should be included along with descriptions, equations and stuff.
+
 ```latex
 \documentclass{article}
 \usepackage{tikz}
 \usetikzlibrary{quantikz}
 
 \begin{document}
+\begin{center}      %Optional centering
+
+%(...circuit code from the output goes here...)
+% you may as well just pipe the output file of pyquirk as input:
+
+\input{output.tex}
+
+% or you can completely copy-paste the output of pyquirk:
+
 \begin{quantikz}
-
-...circuit code goes here...
-
+\lstick{\ket{0}}&\gate{H} & \ctrl{1} & \meter{}& \cw \\
+\lstick{\ket{0}}&\qw & \targ{} & \qw& \qw
 \end{quantikz}
+
+\end{center}
 \end{document}
 ```
 
+Use the example files supplied if you have more doubts. Submit an issue if you find errors or need help!
+
 ## Future improvements
-- To add more complex examples.
+- Adding more complex examples.
 - Parsing from URL.
 - Multiple targets for same control.
