@@ -65,4 +65,4 @@ Use the example files supplied if you have more doubts. Submit an issue if you f
 ## Future improvements
 - Adding more complex examples.
 - Parsing from URL.
-- Multiple targets for same control.
+- Multiple targets for same control does not work properly now. Will be fixed.
