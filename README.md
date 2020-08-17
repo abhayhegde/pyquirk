@@ -12,9 +12,20 @@ A simple python program to convert graphical circuits to quantikz figures.
 
 ## Usage
 
-Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/quirk) into a `.txt` file. The output is formatted into a `.tex` file.
+Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/quirk) into a `.txt` file as explained below. The output is formatted into a `.tex` file.
 
-**For example:** `python3 pyquirk.py circuit_json.txt -o circuit.tex`
+**Syntax:** `python3 pyquirk.py input.txt output.tex`
+
+**For example:** `python3 pyquirk.py circuit_json.txt circuit.tex`
+
+#### Steps to generate the `.txt` file
+**Step 1:** Click on `Export` button displayed on the header.
+
+![Step 1: Click Export button](../quirk1-m.png)
+
+**Step 2:** `Copy to Clipboard` the JSON settings.
+
+![Step 2: Click on Copy JSON settings](../quirk2.png)
 
 A short rundown of **quantikz** usage:
 ```latex
