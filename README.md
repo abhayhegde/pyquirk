@@ -6,6 +6,7 @@ A simple python program to convert graphical circuits to quantikz figures.
 - [quantikz](https://ctan.org/pkg/quantikz?lang=en): A LaTeX package for drawing quantum circuits. Here is its [manual](http://mirrors.ibiblio.org/CTAN/graphics/pgf/contrib/quantikz/quantikz.pdf).
 
 ##### How to manually install a new package on MikTeX on Windows?
+If you do not know how to manually install a new TeX package to your system, these links may be of some help to you.
 - [Windows with MikTeX](https://tex.stackexchange.com/questions/2063/how-can-i-manually-install-a-package-on-miktex-windows)
 - [Linux](https://tex.stackexchange.com/questions/73016/how-do-i-install-an-individual-package-on-a-linux-system)
 - [Mac with TeXShop](https://tex.stackexchange.com/questions/12102/how-do-i-install-ctan-packages-on-mac-os-with-texshop)
@@ -19,7 +20,7 @@ Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/
 **For example:** `python3 pyquirk.py circuit_json.txt circuit.tex`
 
 #### Steps to generate the `.txt` file
-**Step 1:** Click on `Export` button displayed on the header.
+**Step 1:** Click on `Export` button displayed on the header of [Quirk](https://algassert.com/quirk).
 
 ![Step 1: Click Export button](quirk1-m.png)
 
@@ -27,8 +28,11 @@ Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/
 
 ![Step 2: Click on Copy JSON settings](quirk2.png)
 
+---
+
 A short rundown of **quantikz** usage is given below. I assume this is the format of your main file in which the circuit should be included along with descriptions, equations and stuff.
 
+**A minimal working example:**
 ```latex
 \documentclass{article}
 \usepackage{tikz}
