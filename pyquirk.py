@@ -13,27 +13,26 @@ nrow = max([len(i) for i in data['cols']])
 
 for col in data['cols']:
     if "•" in col:
-        ctrl_ind = col.index("•")
-        nt_gate = next((gate for gate in col if gate not in ["•", 1]), None)
-        targ_ind = col.index(nt_gate)
-        if nt_gate == "X": col[col.index(nt_gate)] = "X1"
-        diff = targ_ind - ctrl_ind
-        col[ctrl_ind] = ''.join(["\\ctrl{",str(diff),"}"])
-        # all_gates = [gate for gate in col if gate != 1]
-        # all_gates = ["X1" if x=="X" else x for x in all_gates]
-        # if len(all_gates) > 1:
-        #     for i in range(1, len(all_gates)):
-        #         vindex = col.index(all_gates[i]) - col.index(all_gates[i-1])
-        #         print(vindex)
+        nt_gates = [gate for gate in col if gate != 1]
+        ctrl_index = col.index(nt_gates[0])
+        targ_index = col.index(nt_gates[1])
+        diff = targ_index - ctrl_index
+        col[ctrl_index] = ''.join(["\\ctrl{", str(diff), "}"])
+        if "X" in nt_gates: col[col.index("X")] = "\\targ{}" 
+    #     for i in range(2, len(nt_gates)):
+    #         vdiff = col.index(nt_gates[i]) - col.index(nt_gates[i-1])
+    #         col[i] += ''.join([" \\vqw{", str(vdiff), "}"])
+    # if "X" in col: str.replace("X", "\\targ{}")
+
+# print(data['cols'])
     
     if "◦" in col:
         octrl_ind = col.index("◦")
         nt_gate = next((gate for gate in col if gate not in ["◦", 1]), None)
         targ_ind = col.index(nt_gate)
-        if nt_gate == "X": col[col.index(nt_gate)] = "X1"
+        if nt_gate == "X": col[col.index(nt_gate)] = "\\targ{}"
         odiff = targ_ind - octrl_ind
         col[octrl_ind] = ''.join(["\\octrl{",str(odiff),"}"])
-
 
 if data.get('init') == None:
     data['init'] = [0] * nrow
@@ -58,7 +57,7 @@ main = []
 ## substitutions
 for i in range(nrow):
     # row = [''.join(["\gate{", ele, "}"]) if ele not in subs else subs[ele] for ele in data['rows'][i]]
-    row = [subs[ele] if ele in subs else ele if "ctrl" in str(ele) else ''.join(["\gate{", ele, "}"]) for ele in data['rows'][i]]
+    row = [subs[ele] if ele in subs else ele if "ctrl" or "targ" in str(ele) else ''.join(["\gate{", ele, "}"]) for ele in data['rows'][i]]
     comp.append(row)
     if i == nrow - 1:
         main.append(''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \qw', '\n']))
