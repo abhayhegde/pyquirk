@@ -21,11 +21,11 @@ Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/
 #### Steps to generate the `.txt` file
 **Step 1:** Click on `Export` button displayed on the header.
 
-![Step 1: Click Export button](../quirk1-m.png)
+![Step 1: Click Export button](quirk1-m.png)
 
 **Step 2:** `Copy to Clipboard` the JSON settings.
 
-![Step 2: Click on Copy JSON settings](../quirk2.png)
+![Step 2: Click on Copy JSON settings](quirk2.png)
 
 A short rundown of **quantikz** usage is given below. I assume this is the format of your main file in which the circuit should be included along with descriptions, equations and stuff.
 
