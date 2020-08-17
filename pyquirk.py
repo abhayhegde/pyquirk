@@ -15,22 +15,28 @@ for col in data['cols']:
     if "•" in col:
         nt_gates = [gate for gate in col if gate != 1]
         ctrl_index = col.index("•")
-        targ_index = col.index(next(gate for gate in nt_gates if gate != "•"))
+        targ_index = col.index(next(gate for gate in nt_gates if gate not in ["•"]))
         diff = targ_index - ctrl_index
         col[ctrl_index] = ''.join(["\\ctrl{", str(diff), "}"])
-        if "X" in nt_gates: col[col.index("X")] = "\\targ{}" 
-    #     for i in range(2, len(nt_gates)):
-    #         vdiff = col.index(nt_gates[i]) - col.index(nt_gates[i-1])
-    #         col[i] += ''.join([" \\vqw{", str(vdiff), "}"])
-    # if "X" in col: str.replace("X", "\\targ{}")
+        indices = [i for i, x in enumerate(col) if x == "•"]
+        for i in indices: col[i] = "\\ctrl{}"
+        if "X" in nt_gates: col[col.index("X")] = "\\targ{}"
+        # vgates = []
+        # lst = ['ctrl', "1"]
+        # for gate in col:
+        #     if any([x in str(gate) for x in lst]): pass
+        #     else: vgates.append(gate)
+        # for i in range(1, len(vgates)):
+        #     vdiff = col.index(vgates[i]) - col.index(vgates[i-1])
+        #     col[i+1] += ''.join([" \\vqw {", str(vdiff), "}"])
     
     if "◦" in col:
-        octrl_ind = col.index("◦")
-        nt_gate = next((gate for gate in col if gate not in ["◦", 1]), None)
-        targ_ind = col.index(nt_gate)
-        if nt_gate == "X": col[col.index(nt_gate)] = "\\targ{}"
-        odiff = targ_ind - octrl_ind
-        col[octrl_ind] = ''.join(["\\octrl{",str(odiff),"}"])
+        nt_gates = [gate for gate in col if gate != 1]
+        octrl_index = col.index("◦")
+        otarg_index = col.index(next(gate for gate in nt_gates if gate != "◦"))
+        diff = otarg_index - octrl_index
+        col[octrl_index] = ''.join(["\\octrl{", str(diff), "}"])
+        if "X" in nt_gates: col[col.index("X")] = "\\targ{}"
 
     if "Swap" in col:
         pos = []
@@ -70,7 +76,7 @@ for i in range(nrow):
         main.append(
             ''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \qw ', '\\\\', '\n']))
             
-## to replace with classical wires if meter is there
+## to replace with classical wires if meter is present
 met_index = [i.find('\\meter{}') for i in main]
 if max(met_index) > -1:
     for i in range(len(met_index)):

@@ -11,13 +11,16 @@ If you do not know how to manually install a new TeX package to your system, the
 - [Linux](https://tex.stackexchange.com/questions/73016/how-do-i-install-an-individual-package-on-a-linux-system)
 - [Mac with TeXShop](https://tex.stackexchange.com/questions/12102/how-do-i-install-ctan-packages-on-mac-os-with-texshop)
 
-## Usage
+## 💾 Installation and Usage
+Clone the repo for installing. `pyquirk.py` converts the JSON to TeX codes.
 
 Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/quirk) into a `.txt` file as explained below. The output is formatted into a `.tex` file.
 
 **Syntax:** `python3 pyquirk.py input.txt output.tex`
 
 **For example:** `python3 pyquirk.py circuit_json.txt circuit.tex`
+
+Now you may include `circuit.tex` which contains only tikz environement in `main.tex` that supplements packages. For example, see the reposiroty and read below.
 
 #### Steps to generate the `.txt` file
 **Step 1:** Click on `Export` button displayed on the header of [Quirk](https://algassert.com/quirk).
