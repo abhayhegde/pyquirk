@@ -42,10 +42,10 @@ for col in data['cols']:
             vind += 1
         cols = [str(x) for x in col]
         if "X" in nt_gates: col[col.index("X")] = "\\targ{}"
-        for i in range(len(vgates) - 1):
-            if vgates[i+1] != 0 and vgates[i] != 0:
-                vdiff = vgates[i+1] - vgates[i]
-                subcols[i] = ''.join([" \\vqw {", str(vdiff), "}"])
+        vnon = [x for i, x in enumerate(vgates) if x != 0]
+        for i in range(len(vnon)-1):
+            vdiff = vgates.index(vnon[i+1]) - vgates.index(vnon[i])
+            subcols[vgates.index(vnon[i])] = ''.join([" \\vqw{", str(vdiff), "}"])
     subcol.append(subcols)
     if "Swap" in col:
         pos = []
