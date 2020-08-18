@@ -6,7 +6,6 @@ Acknowledgements: https://algassert.com/quirk
 
 import sys
 import json
-import operator
 
 file = open(str(sys.argv[1]), "r")
 data = json.load(file)
