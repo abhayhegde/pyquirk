@@ -75,5 +75,6 @@ Use the example files supplied if you have more doubts. Submit an issue if you f
 
 ## Acknowledgement
 - [Craig Gidney](https://github.com/Strilanc) for building Quirk.
+- [Alastair Kay](http://www.ma.rhul.ac.uk/akay/index.php) for maintaining quantikz.
 
 This is one of those weekend projects. May contain sharp edges! :)
