@@ -23,7 +23,7 @@ Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/
 
 Now you may include `circuit.tex` which contains only tikz environement in `main.tex` that supplements packages. Read below for clarity.
 
-#### Steps to generate the `.txt` file
+### Steps to generate the `.txt` file
 **Step 1:** Click on `Export` button displayed on the header of [Quirk](https://algassert.com/quirk).
 
 ![Step 1: Click Export button](quirk1-m.png)
@@ -32,7 +32,11 @@ Now you may include `circuit.tex` which contains only tikz environement in `main
 
 ![Step 2: Click on Copy JSON settings](quirk2.png)
 
+Paste this into a `.txt` file and this must be the input.
+
 ---
+
+**After getting `output.tex`**
 
 A short rundown of **quantikz** usage is given below. I assume this is the format of your main file in which the circuit should be included along with descriptions, equations and stuff.
 
