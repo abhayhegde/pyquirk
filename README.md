@@ -63,6 +63,5 @@ A short rundown of **quantikz** usage is given below. I assume this is the forma
 Use the example files supplied if you have more doubts. Submit an issue if you find errors or need help!
 
 ## Future improvements
-- Adding more complex examples.
 - Parsing from URL.
-- Multiple targets for same control does not work properly now. Will be fixed.
+- A dedicated website for generating tex code after pasting JSON.
