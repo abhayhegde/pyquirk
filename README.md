@@ -67,5 +67,5 @@ Use the example files supplied if you have more doubts. Submit an issue if you f
 - Parsing from algassert URL.
 - A dedicated website for generating tex code after pasting JSON.
 
-## Acknowledgements
+## Acknowledgement
 - [Craig Gidney](https://github.com/Strilanc) for building Quirk.
