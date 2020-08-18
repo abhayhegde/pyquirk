@@ -6,6 +6,7 @@ Acknowledgements: https://algassert.com/quirk
 
 import sys
 import json
+import operator
 
 file = open(str(sys.argv[1]), "r")
 data = json.load(file)
@@ -35,14 +36,17 @@ for col in data['cols']:
            col[ctrl_ind] = ''.join(["\\ctrl{", str(diff), "}"])
         vgates = []
         lst = ['ctrl', "1"]
+        vind = 0
         for gate in col:
-            if any([x in str(gate) for x in lst]): pass
-            else: vgates.append(gate)
+            if any([x in str(gate) for x in lst]): vgates.append(0)
+            else: vgates.append(vind)
+            vind += 1
         cols = [str(x) for x in col]
         if "X" in nt_gates: col[col.index("X")] = "\\targ{}"
         for i in range(len(vgates) - 1):
-            vdiff = cols.index(vgates[i+1]) - cols.index(vgates[i])
-            subcols[i+1] = ''.join([" \\vqw {", str(vdiff), "}"])
+            if vgates[i+1] != 0 and vgates[i] != 0:
+                vdiff = vgates[i+1] - vgates[i]
+                subcols[i] = ''.join([" \\vqw {", str(vdiff), "}"])
     subcol.append(subcols)
     if "Swap" in col:
         pos = []
