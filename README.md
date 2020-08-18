@@ -63,5 +63,5 @@ A short rundown of **quantikz** usage is given below. I assume this is the forma
 Use the example files supplied if you have more doubts. Submit an issue if you find errors or need help!
 
 ## Future improvements
-- Parsing from URL.
+- Parsing from algassert URL.
 - A dedicated website for generating tex code after pasting JSON.
