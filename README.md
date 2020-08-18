@@ -14,7 +14,8 @@ If you do not know how to manually install a new TeX package to your system, the
 ## 💾 Installation and Usage
 Clone the repo for installing. `pyquirk.py` converts the JSON to TeX codes.
 
-Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/quirk) into a `.txt` file as explained below. The output is formatted into a `.tex` file.
+Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/quirk)(a toy quantum circuit simulator)
+ into a `.txt` file as explained below. The output is formatted into a `.tex` file.
 
 **Syntax:** `python3 pyquirk.py input.txt output.tex`
 
@@ -65,3 +66,6 @@ Use the example files supplied if you have more doubts. Submit an issue if you f
 ## Future improvements
 - Parsing from algassert URL.
 - A dedicated website for generating tex code after pasting JSON.
+
+## Acknowledgements
+- [Craig Gidney](https://github.com/Strilanc) for building Quirk.
