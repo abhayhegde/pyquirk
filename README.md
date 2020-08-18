@@ -1,6 +1,8 @@
 # pyquirk
 A simple python program to convert graphical circuits to quantikz figures.
 
+![Product](product.png)
+
 ## Requirements
 - Python 3+
 - [quantikz](https://ctan.org/pkg/quantikz?lang=en): A LaTeX package for drawing quantum circuits. Here is its [manual](http://mirrors.ibiblio.org/CTAN/graphics/pgf/contrib/quantikz/quantikz.pdf).
