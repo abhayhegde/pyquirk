@@ -69,3 +69,5 @@ Use the example files supplied if you have more doubts. Submit an issue if you f
 
 ## Acknowledgement
 - [Craig Gidney](https://github.com/Strilanc) for building Quirk.
+
+This is one of those weekend projects. May contain sharp edges! :)
