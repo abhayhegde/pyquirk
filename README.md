@@ -19,9 +19,9 @@ Copy and paste the JSON data of your circuit from [Quirk](https://algassert.com/
 
 **Syntax:** `python3 pyquirk.py input.txt output.tex`
 
-**For example:** `python3 pyquirk.py circuit_json.txt circuit.tex`
+**For example:** In this repo, `python3 pyquirk.py circuit_json.txt circuit.tex`
 
-Now you may include `circuit.tex` which contains only tikz environement in `main.tex` that supplements packages. For example, see the reposiroty and read below.
+Now you may include `circuit.tex` which contains only tikz environement in `main.tex` that supplements packages. Read below for clarity.
 
 #### Steps to generate the `.txt` file
 **Step 1:** Click on `Export` button displayed on the header of [Quirk](https://algassert.com/quirk).
