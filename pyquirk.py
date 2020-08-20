@@ -85,7 +85,7 @@ def insert_vertical_qw(data):
             sdiff = pos[1] - pos[0]
             col[pos[0]] = ''.join(["\\swap{", str(sdiff), "}"])
             col[pos[1]] = "\\targX{}"
-        return data, subcol
+    return data, subcol
 
 def get_initial_states(data):
     global NUM_ROWS
