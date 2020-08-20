@@ -27,23 +27,27 @@ def get_parser():
     return parser
 
 def decode_url(URL):
+    """Decodes URL from hexadecimal to normal characters."""
     global args
     url = args.url
     decoded_url = unquote(url)
     return decoded_url
 
 def json_from_URL(decoded_url):
+    """Outputs dictionary for JSON associated with the URL."""
     decoded_url = unquote(decoded_url)
     file = decoded_url[decoded_url.find("{"):]
     data = json.loads(file)
     return data
 
 def json_from_text(text_file):
+    """JSON to dictionary from text file."""
     tmp = open(text_file, "r")
     data = json.load(tmp)
     return data
 
 def insert_vertical_qw(data):
+    """Necessary for inserting vertical quantum wires."""
     special = ["•", "◦"]
     subcol = []    
 
@@ -88,6 +92,7 @@ def insert_vertical_qw(data):
     return data, subcol
 
 def get_initial_states(data):
+    """Defines initial states."""
     global NUM_ROWS
     NUM_ROWS = max([len(i) for i in data['cols']])
     if data.get('init') == None:
@@ -97,12 +102,14 @@ def get_initial_states(data):
     return data
 
 def convert_columns_to_rows(data):
+    """Input data is given in columns, but quantikz draws row-by-row. This function transposes data."""
     for i in range(len(data['cols'])):
         data['cols'][i] += [1] * (NUM_ROWS - len(data['cols'][i]))
     data['rows'] = list(map(list, zip(*data.pop('cols'))))
     return data
 
 def vqw_append(subcol):
+    """Notes down the indices where vertical wires should be inserted."""
     vqw_ind = []
     for i in range(len(subcol)):
         for j in range(len(subcol[i])):
@@ -111,11 +118,13 @@ def vqw_append(subcol):
     return vqw_ind
 
 def tex_initial_states(data):
+    """Initial states are texed."""
     initial_state = []
     initial_state = [''.join(["\lstick{\ket{", str(data['init'][row]),"}}"]) for row in range(len(data['init']))]
     return data, initial_state
 
 def substitute_gates(data, vqw_ind, subcol, initial_state):
+    """Every circuit gate is appended here. Real substituions happens here."""
     global NUM_ROWS
     comp = []
     commands = []
@@ -140,6 +149,7 @@ def substitute_gates(data, vqw_ind, subcol, initial_state):
     return commands
 
 def replace_with_cw(commands):
+    """Measured wires are replaced by classical wires."""
     ## to replace with classical wires if meter is present
     met_index = [i.find('\\meter{}') for i in commands]
     if max(met_index) > -1:
@@ -151,6 +161,7 @@ def replace_with_cw(commands):
     return commands
 
 def write_output_commands(commands, code_file):
+    """Outputs only quantikz environment."""
     quantikz_file = open(code_file, "w")
     quantikz_file.write("\\begin{quantikz}\n")
     quantikz_file.write(''.join(commands))
@@ -158,6 +169,7 @@ def write_output_commands(commands, code_file):
     quantikz_file.close()
 
 def write_output_main(commands, main_file):
+    """Outputs a standalone latex file containing the code."""
     latex_file = open(main_file, "w")
     latex_file.write("\\documentclass{article}\n\\usepackage{tikz}\n\\usetikzlibrary{quantikz}\n\\begin{document}\n\\begin{center}\n\\begin{quantikz}\n"
 )
@@ -166,6 +178,7 @@ def write_output_main(commands, main_file):
     latex_file.close()
 
 def convert_json_to_tex(data):
+    """Uses all functions defined in this file to convert JSON to TeX codes."""
     vqw_data, subcol = insert_vertical_qw(data)
     states_init = get_initial_states(vqw_data)
     rows_formed = convert_columns_to_rows(states_init)

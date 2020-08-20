@@ -14,25 +14,46 @@ If you do not know how to manually install a new TeX package to your system, the
 - [Mac with TeXShop](https://tex.stackexchange.com/questions/12102/how-do-i-install-ctan-packages-on-mac-os-with-texshop)
 
 ## 💾 Installation and Usage
-Clone the repo for installing. `pyurlquirk.py` converts URL to quantikz circuit directly. `pyquirk.py` converts the JSON to TeX codes. Both produce the same output; the usage is a matter of convenience.
+Clone the repo for installing. `pyquirk.py` converts URL or JSON files to quantikz circuit directly. Both produce the same output; the usage is a matter of convenience.
 
-Copy and paste the URL from [Quirk](https://algassert.com/quirk)(a toy quantum circuit simulator) if you are using `pyurlquirk.py`.
+Copy and paste the URL from [Quirk](https://algassert.com/quirk)(a toy quantum circuit simulator) or use the JSON data of your circuit and paste it into a `.txt` file as explained below. The output is formatted into a `.tex` file.
 
-While using `pyquirk.py` use the JSON data of your circuit and paste it into a `.txt` file as explained below. The output is formatted into a `.tex` file.
+#### Usage
+The options are as shown. You may see this by using `python pyquirk.py -h`
 
-**Usage for pyurlquirk:** 
 ```bash
-python3 pyurlquirk.py URL output.tex
-python3 pyurlquirk.py https://algassert.com/quirk#circuit=%7B%22cols%22%3A%5B%5B%22H%22%5D%2C%5B%22%E2%80%A2%22%2C%22X%22%5D%2C%5B%22Measure%22%5D%5D%7D circuit.tex
+usage: pyquirk.py [-h] [-u URL | -i INPUT] [-o OUTPUT | -m MAIN]
+
+Generates quantikz LateX codes from either URL or a text file. Options are explained below.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -u URL, --url URL     Converts Quirk URL to circuit code.
+  -i INPUT, --input INPUT
+                        Converts input text file with circuit in JSON format to circuit code.
+  -o OUTPUT, --output OUTPUT
+                        Latex code with only quantikz environment is saved in output file.
+  -m MAIN, --main MAIN  A standalone LaTeX document containing the output circuit code.
 ```
 
-**Usage for pyquirk:** In this repo, 
+- In case of an URL the syntax is `python3 pyquirk.py -u URL -o output.tex`. For example,
+
 ```bash
-python3 pyquirk.py input.txt output.tex
-python3 pyquirk.py circuit_json.txt circuit.tex
+python3 pyquirk.py -u https://algassert.com/quirk#circuit=%7B%22cols%22%3A%5B%5B%22H%22%5D%2C%5B%22%E2%80%A2%22%2C%22X%22%5D%2C%5B%22Measure%22%5D%5D%7D -o circuit.tex
 ```
 
-Now you may include `circuit.tex` which contains only tikz environement in `main.tex` that supplements packages. Read below for clarity.
+- In case of a text file containing JSON, the format is `python3 pyquirk.py -i input.txt -o output.tex`
+
+```bash
+python3 pyquirk.py -i circuit_json.txt -o circuit.tex
+```
+
+Now you may include `circuit.tex` which contains only tikz environement in `main.tex` that supplements packages. Read below for clarity. Also you may generate a standalone LaTeX file containing the code using,
+
+```bash
+python3 pyquirk.py -i input.txt -m main.tex
+python3 pyquirk.py -i circuit_json.txt -m main_file.tex
+```
 
 ### Steps to generate the URL or `.txt` file
 **Step 1:** Click on `Export` button displayed on the header of [Quirk](https://algassert.com/quirk).
@@ -73,6 +94,7 @@ A short rundown of **quantikz** usage is given below. I assume this is the forma
 \end{center}
 \end{document}
 ```
+Note that the above minimal example is the content of main.tex, so you might as well use `-m` argument.
 
 Use the example files supplied if you have more doubts. Submit an issue if you find errors or need help!
 
