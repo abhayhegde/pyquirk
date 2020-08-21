@@ -47,7 +47,7 @@ def json_from_text(text_file):
     return data
 
 def insert_vertical_qw(data):
-    """Necessary for inserting vertical quantum wires."""
+    """Inserts vertical quantum wires."""
     special = ["•", "◦"]
     subcol = []    
 
@@ -141,11 +141,12 @@ def substitute_gates(data, vqw_ind, subcol, initial_state):
         comp[i][j] += subcol[j][i]
 
     for i in range(NUM_ROWS):
+        # \ghost{x} for better vertical spacing and alignment. See section (C). Alignment, P.No. 8 of quantikz manual.
         if i == NUM_ROWS - 1:
-            commands.append(''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \qw', '\n']))
+            commands.append(''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \ghost{X} \qw', '\n']))
         else:
             commands.append(
-                ''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \qw ', '\\\\', '\n']))
+                ''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \ghost{X} \qw ', '\\\\', '\n']))
     return commands
 
 def replace_with_cw(commands):
