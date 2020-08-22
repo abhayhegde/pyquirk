@@ -26,13 +26,6 @@ def get_parser():
                         help='A standalone LaTeX document containing the output circuit code.')
     return parser
 
-def decode_url(URL):
-    """Decodes URL from hexadecimal to normal characters."""
-    global args
-    url = args.url
-    decoded_url = unquote(url)
-    return decoded_url
-
 def json_from_URL(decoded_url):
     """Outputs dictionary for JSON associated with the URL."""
     decoded_url = unquote(decoded_url)
