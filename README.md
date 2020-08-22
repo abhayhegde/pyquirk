@@ -102,6 +102,9 @@ Use the example files supplied if you have more doubts. Submit an issue if you f
 - Parsing from algassert URL.
 - A dedicated website for generating tex code after pasting JSON.
 
+## Contribution
+Submit a pull request. You can also DM me at [@abhayhegde_](https://twitter.com/abhayhegde_).
+
 ## Acknowledgement
 - [Craig Gidney](https://github.com/Strilanc) for building Quirk.
 - [Alastair Kay](http://www.ma.rhul.ac.uk/akay/index.php) for maintaining quantikz.
