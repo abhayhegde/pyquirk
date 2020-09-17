@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 pyquirk.py: A simple python program to convert quantum circuits to TeX code.
-Written by Abhay Hegde.
+Written by Abhay Hegde (2020).
+
+https://github.com/abhayhegde/pyquirk
 """
 
 import sys
@@ -13,18 +15,22 @@ NUM_ROWS = 0
 
 def get_parser():
     """Returns the parser argument for this script."""
-    parser = argparse.ArgumentParser(description='Generates quantikz LateX codes from either URL or a text file. Options are explained below.')
-    group = parser.add_mutually_exclusive_group()
-    nextg = parser.add_mutually_exclusive_group()
-    group.add_argument("-u", "--url", dest="url", nargs=1, type=str, 
-                       help='Converts Quirk URL to circuit code.')
-    group.add_argument('-i', '--input', dest="input", nargs=1, 
-                       help='Converts input text file with circuit in JSON format to circuit code.')
-    nextg.add_argument('-o', '--output', nargs=1, dest="output", 
-                        help='Latex code with only quantikz environment is saved in output file.')
-    nextg.add_argument('-m', '--main', nargs=1, 
-                        help='A standalone LaTeX document containing the output circuit code.')
-    return parser
+    try:
+        parser = argparse.ArgumentParser(description='Generates quantikz LateX codes from either URL or a text file. Options are explained below.')
+        group = parser.add_mutually_exclusive_group()
+        nextg = parser.add_mutually_exclusive_group()
+        group.add_argument("-u", "--url", dest="url", nargs=1, type=str, 
+                           help='Converts Quirk URL to circuit code.')
+        group.add_argument('-i', '--input', dest="input", nargs=1, 
+                           help='Converts input text file with circuit in JSON format to circuit code.')
+        nextg.add_argument('-o', '--output', nargs=1, dest="output", 
+                            help='Latex code with only quantikz environment is saved in output file.')
+        nextg.add_argument('-m', '--main', nargs=1, 
+                            help='A standalone LaTeX document containing the output circuit code.')
+        return parser
+    except argparse.ArgumentParser as err:
+        print(str(err))
+        sys.exit(2)
 
 def json_from_URL(decoded_url):
     """Outputs dictionary for JSON associated with the URL."""
