@@ -2,6 +2,8 @@
 A simple python program to convert graphical circuits to quantikz figures.
 
 ![Product](product.png)
+
+## Demo
 ![demo](demo.gif)
 
 ## Requirements
