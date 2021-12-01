@@ -139,6 +139,11 @@ def substitute_gates(data, vqw_ind, subcol, initial_state):
     for i, j in vqw_ind:
         comp[i][j] += subcol[j][i]
 
+    for c in range(len(comp[0])):
+        width = max(len(row[c]) for row in comp)
+        for row in comp:
+            row[c] = row[c].ljust(width)
+
     for i in range(NUM_ROWS):
         # \ghost{x} for better vertical spacing and alignment. See section (C). Alignment, P.No. 8 of quantikz manual.
         if i == NUM_ROWS - 1:
