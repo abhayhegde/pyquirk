@@ -106,7 +106,7 @@ Use the example files supplied if you have more doubts. Submit an issue if you f
 - A dedicated website for generating tex code after pasting JSON.
 
 ## Contribution
-Submit a pull request. You can also DM me at [@abhayhegde_](https://twitter.com/abhayhegde_).
+Submit a pull request. You can also DM me at [@abhayhegde_](https://twitter.com/PsintificAbhay).
 
 ## Acknowledgement
 - [Craig Gidney](https://github.com/Strilanc) for building Quirk.
