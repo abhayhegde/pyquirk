@@ -90,8 +90,8 @@ A short rundown of **quantikz** usage is given below. I assume this is the forma
 % or you can completely copy-paste the output of pyquirk:
 
 \begin{quantikz}
-\lstick{\ket{0}}&\gate{H} & \ctrl{1} & \meter{}& \cw \\
-\lstick{\ket{0}}&\qw & \targ{} & \qw& \qw
+\lstick{$\ket{0}$}&\gate{H} & \ctrl{1} & \meter{}& \cw \\
+\lstick{$\ket{0}$}&\qw & \targ{} & \qw& \qw
 \end{quantikz}
 
 \end{center}
