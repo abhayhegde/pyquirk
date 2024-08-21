@@ -119,7 +119,7 @@ def vqw_append(subcol):
 def tex_initial_states(data):
     """Initial states are texed."""
     initial_state = []
-    initial_state = [''.join(["\lstick{\ket{", str(data['init'][row]),"}}"]) for row in range(len(data['init']))]
+    initial_state = [''.join(["\lstick{$\ket{", str(data['init'][row]),"}$}"]) for row in range(len(data['init']))]
     return data, initial_state
 
 def substitute_gates(data, vqw_ind, subcol, initial_state):
