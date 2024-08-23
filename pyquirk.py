@@ -48,16 +48,16 @@ def json_from_text(text_file):
 def insert_vertical_qw(data):
     """Inserts vertical quantum wires."""
     special = ["•", "◦"]
-    subcol = []    
+    subcol = []
 
     for col in data['cols']:
         subcols = [''] * len(col)
         if any(s in col for s in special):
-            inds1 = [i for i, x in enumerate(col) if x == "•"] 
-            inds2 = [i for i, x in enumerate(col) if x == "◦"] 
+            inds1 = [i for i, x in enumerate(col) if x == "•"]
+            inds2 = [i for i, x in enumerate(col) if x == "◦"]
             if len(inds1) == 0: ctrl_ind = inds2[0]
             elif len(inds2) == 0: ctrl_ind = inds1[0]
-            else: ctrl_ind = min([inds1[0], inds2[0]]) 
+            else: ctrl_ind = min([inds1[0], inds2[0]])
             nt_gates = [gate for gate in col if gate not in special and gate != 1]
             targ_ind = col.index(nt_gates[0])
             diff = targ_ind - ctrl_ind
@@ -119,7 +119,7 @@ def vqw_append(subcol):
 def tex_initial_states(data):
     """Initial states are texed."""
     initial_state = []
-    initial_state = [''.join(["\lstick{$\ket{", str(data['init'][row]),"}$}"]) for row in range(len(data['init']))]
+    initial_state = [''.join(["\\lstick{$\\ket{", str(data['init'][row]),"}$}"]) for row in range(len(data['init']))]
     return data, initial_state
 
 def substitute_gates(data, vqw_ind, subcol, initial_state):
@@ -128,12 +128,12 @@ def substitute_gates(data, vqw_ind, subcol, initial_state):
     comp = []
     commands = []
     rules = dict(zip([1, "X", "Y", "Z", "H", "U", "Measure", "Z^½", "Z^¼", "Z^-½","Z^-¼", "Y^½", "Y^¼", "Y^-½","X^-¼", "X^½", "X^¼", "X^-½","X^-¼", "…"],
-                ["\qw", "\gate{X}", "\gate{Y}", "\gate{Z}", "\gate{H}", "\gate{U}", "\meter{}", "\\gate{S}", "\\gate{T}","\\gate{S^{-1}}", "\\gate{T^{-1}}", "\\gate{Y^{\\frac{1}{2}}}", "\\gate{Y^{\\frac{1}{4}}}","\\gate{Y^{-\\frac{1}{2}}}", "\\gate{Y^{-\\frac{1}{4}}}", "\\gate{X^{\\frac{1}{2}}}", "\\gate{X^{\\frac{1}{4}}}","\\gate{X^{-\\frac{1}{2}}}", "\\gate{X^{-\\frac{1}{4}}}", "\qw"]))
+                ["\\qw", "\\gate{X}", "\\gate{Y}", "\\gate{Z}", "\\gate{H}", "\\gate{U}", "\\meter{}", "\\gate{S}", "\\gate{T}","\\gate{S^{-1}}", "\\gate{T^{-1}}", "\\gate{Y^{\\frac{1}{2}}}", "\\gate{Y^{\\frac{1}{4}}}","\\gate{Y^{-\\frac{1}{2}}}", "\\gate{Y^{-\\frac{1}{4}}}", "\\gate{X^{\\frac{1}{2}}}", "\\gate{X^{\\frac{1}{4}}}","\\gate{X^{-\\frac{1}{2}}}", "\\gate{X^{-\\frac{1}{4}}}", "\\qw"]))
 
     ## substitutions
     for i in range(NUM_ROWS):
         # leave = ['ctrl', 'targ', 'gate']
-        row = [rules[ele] if ele in rules else ele if "ctrl" in str(ele) else ele if "targ" in str(ele) else ele if "swap" in str(ele) else ''.join(["\gate{", ele, "}"]) for ele in data['rows'][i]]
+        row = [rules[ele] if ele in rules else ele if "ctrl" in str(ele) else ele if "targ" in str(ele) else ele if "swap" in str(ele) else ''.join(["\\gate{", ele, "}"]) for ele in data['rows'][i]]
         comp.append(row)
 
     for i, j in vqw_ind:
@@ -147,10 +147,10 @@ def substitute_gates(data, vqw_ind, subcol, initial_state):
     for i in range(NUM_ROWS):
         # \ghost{x} for better vertical spacing and alignment. See section (C). Alignment, P.No. 8 of quantikz manual.
         if i == NUM_ROWS - 1:
-            commands.append(''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \ghost{X} \qw', '\n']))
+            commands.append(''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \\ghost{X} \\qw', '\n']))
         else:
             commands.append(
-                ''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \ghost{X} \qw ', '\\\\', '\n']))
+                ''.join([initial_state[i], '&', ' & '.join(comp[i]), '& \\ghost{X} \\qw ', '\\\\', '\n']))
     return commands
 
 def replace_with_cw(commands):
@@ -161,7 +161,7 @@ def replace_with_cw(commands):
         for i in range(len(met_index)):
             if met_index[i] > -1:
                 old_str = commands[i][met_index[i]+len('\\meter{} &'):]
-                new_str = old_str.replace("\qw", "\cw")
+                new_str = old_str.replace("\\qw", "\\cw")
                 commands[i] = commands[i][:len('\\meter{} &')+met_index[i]] + new_str
     return commands
 
